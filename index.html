@@ -3,6 +3,8 @@
   <head>
     <title>Portfolio</title>
     <link rel="stylesheet" href="stylesheet.css" />
+    <script type="text/javascript" src="planets.js" async></script>
+    <script type="text/javascript" src="changeimg.js" async></script>
   </head>
 
   <body>
@@ -16,11 +18,10 @@
       </div>
       <div class="content_box">
         <div class="content_chunk">
-          <p>
+          <p class="content_textpadding">
             I am a computer engineering major currently attending University of
             Houston.
           </p>
-          <br />
           <p>
             Some of my current hobbies are writing poetry
             <a href="poetry.html">[1]</a>, learning new things, and creating
@@ -36,9 +37,8 @@
       </div>
       <div class="content_box">
         <div class="content_chunk">
-          <h3>Why I am a computer engineer?</h3>
-          <br />
-          <p>
+          <h3 class="content_textpadding">Why I am a computer engineer?</h3>
+          <p class="content_textpadding">
             Previously, I was majoring in computer science, so I found being a
             computer engineer would be a good major to transition to. One of the
             main causes for the transition from computer science to computer
@@ -48,10 +48,10 @@
             computer engineering would be because I would be following in my
             brother&apos;s footsteps as a software engineer.
           </p>
-          <br />
-          <h3>What are some projects you have worked on?</h3>
-          <br />
-          <p>
+          <h3 class="content_textpadding">
+            What are some projects you have worked on?
+          </h3>
+          <p class="content_textpadding">
             Some of the many things I have created in the past as a project
             would be a phone application that would send a mass text to a group
             of people, a digital stopwatch using only integrated circuits (ICs),
@@ -61,13 +61,51 @@
             Right now, I'm working on setting up Arch Linux on my Macbook Pro
             (2011). More info can be found on my resumes.
           </p>
-          <br />
-          <a href="resources/resume1.pdf">Resume 1</a>
-          <br />
-          <a href="resources/resume2.pdf">Resume 2</a>
+          <p>
+            <a href="resources/resume1.pdf">Resume 1</a>
+          </p>
+          <p>
+            <a href="resources/resume2.pdf">Resume 2</a>
+          </p>
         </div>
         <div class="content_chunk">
-          <iframe src="projects/index.html" class="content_project"></iframe>
+          <div class="content_app">
+            <canvas id="planets"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="content_titlebar">
+        <h1>Projects</h1>
+      </div>
+      <div class="content_box">
+        <div class="content_chunk content_projectdesc">
+          <h2 class="content_textpadding">Digital Stopwatch</h2>
+          <p class="content_textpadding">
+            This project focused on the design, simulation, construction, and
+            testing of a fully functional digital stopwatch using digital logic
+            components and sequential circuit principles.
+          </p>
+          <p class="content_textpadding">
+            The system was developed to measure and display elapsed time through
+            the use of D flip-flops, logic gates, timing circuits, and
+            seven-segment displays. To ensure proper functionality, the circuit
+            was first designed and verified using Multisim simulation software
+            before being implemented on a breadboard.
+          </p>
+          <p class="content_textpadding">
+            The final system successfully demonstrated the ability to track time
+            as intended.
+          </p>
+        </div>
+        <div class="content_chunk">
+          <div class="content_imgholder" id="project1">
+            <!-- 
+                TODO MAKE IMAGE SWITCH DOT.
+              -->
+          </div>
         </div>
       </div>
     </div>
