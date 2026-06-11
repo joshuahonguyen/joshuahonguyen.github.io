@@ -7,19 +7,21 @@ const imgs_project1 = [
     href: "videos/00280af5034f4336b3c2d704ebd950a1.mp4",
     download: null,
     id: "project1",
+    title: "click me! (credit to @monet_casas)"
   },
   {
     image: "images/project1/image.png",
     href: "resources/digitalstopwatch.ms14",
     download: "digitalstopwatch.ms14",
     id: "project1",
+    title: "click me!"
   },
 ];
 
 function changeImg(container, source, index) {
   const anchor = document.createElement("a");
   anchor.href = source[index].href;
-  anchor.title = "click me!";
+  anchor.title = source[index].title;
 
   if (source[index].download) {
     anchor.download = source[index].download;
