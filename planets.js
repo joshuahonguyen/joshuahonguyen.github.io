@@ -51,13 +51,16 @@ let angle2 = 0.25;
 let pos2 = 0;
 let center;
 const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-const parentWidth = 820;
-const parentHeight = 307;
+let parentWidth = 820;
+let parentHeight = 307;
 function update() {
+  if (planets.parentElement.clientWidth > 820) {
+    parentWidth = planets.parentElement.clientWidth;
+  }
   planets.height = parentHeight;
   planets.width = parentWidth;
 
-  center = [planets.width / 2, planets.height / 3];
+  center = [planets.width / 2, planets.height / 2];
 
   pos += 0.05;
 
