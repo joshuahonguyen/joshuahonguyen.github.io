@@ -1,9 +1,9 @@
 const planets = document.getElementById("planets");
 const ctx = planets.getContext("2d");
 
-function planet(angle, pos) {
-  rx = 300;
-  ry = 300 * Math.sin(angle);
+function planet(angle, pos, size) {
+  rx = size;
+  ry = size * Math.sin(angle);
   x = center[0];
   y = center[1];
   const magic = 0.551784; // Approximation of the circle with bezier curves
@@ -21,7 +21,13 @@ function planet(angle, pos) {
   ctx.beginPath();
   ctx.strokeStyle = randomColor;
   ctx.fillStyle = randomColor;
-  ctx.arc(x + rx * Math.cos(pos), y + ry * Math.sin(pos), 25, 0, 2 * Math.PI);
+  ctx.arc(
+    x + rx * Math.cos(pos),
+    y + ry * Math.sin(pos),
+    planets.width * .03,
+    0,
+    2 * Math.PI,
+  );
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
@@ -38,7 +44,13 @@ function planet(angle, pos) {
     ctx.beginPath();
     ctx.strokeStyle = randomColor;
     ctx.fillStyle = randomColor;
-    ctx.arc(x + rx * Math.cos(pos), y + ry * Math.sin(pos), 25, 0, 2 * Math.PI);
+    ctx.arc(
+      x + rx * Math.cos(pos),
+      y + ry * Math.sin(pos),
+      planets.width * .03,
+      0,
+      2 * Math.PI,
+    );
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
@@ -54,17 +66,18 @@ const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
 let parentWidth = 820;
 let parentHeight = 307;
 function update() {
-  if (planets.parentElement.clientWidth > 820) {
-    parentWidth = planets.parentElement.clientWidth;
-  }
+  parentWidth = planets.parentElement.clientWidth;
+
   planets.height = parentHeight;
   planets.width = parentWidth;
+
+  let widthRatio = planets.width * 0.45;
 
   center = [planets.width / 2, planets.height / 2];
 
   pos += 0.05;
 
-  planet(angle, pos);
+  planet(angle, pos, widthRatio);
 
   requestAnimationFrame(update);
 }

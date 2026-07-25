@@ -1,5 +1,3 @@
-const project1 = document.getElementById("project1");
-
 // HARDCODED
 const imgs_project1 = [
   {
@@ -7,43 +5,47 @@ const imgs_project1 = [
     href: "videos/00280af5034f4336b3c2d704ebd950a1.mp4",
     download: null,
     id: "project1",
-    title: "click me! (credit to @monet_casas)"
+    title: "click me! (credit to @monet_casas)",
   },
   {
     image: "images/project1/image.png",
-    href: "resources/digitalstopwatch.ms14",
-    download: "digitalstopwatch.ms14",
+    href: null,
+    download: null,
     id: "project1",
-    title: "click me!"
+    title: null,
   },
 ];
 
 function changeImg(container, source, index) {
-  const anchor = document.createElement("a");
-  anchor.href = source[index].href;
-  anchor.title = source[index].title;
-
-  if (source[index].download) {
-    anchor.download = source[index].download;
-  } else {
-    anchor.target = "_blank";
-  }
-
   const img = document.createElement("img");
   img.src = source[index].image;
   img.className = "content_img";
   img.id = source[index].id;
 
-  anchor.appendChild(img);
+  if (source[index].href) {
+    const anchor = document.createElement("a");
+    anchor.title = source[index].title;
+    anchor.href = source[index].href;
 
-  container.replaceChildren(anchor);
+    if (source[index].download) {
+      anchor.download = source[index].download;
+    } else {
+      anchor.target = "_blank";
+    }
+
+    anchor.appendChild(img);
+
+    container.replaceChildren(anchor);
+  }
+  else {
+    container.replaceChildren(img);
+  }
 }
 
 async function fadeImg(source) {
   return new Promise((resolve) => {
     source.addEventListener("transitionend", function handler(e) {
       if (e.propertyName === "opacity") {
-        changeImg(project1, imgs_project1, pos1);
         source.removeEventListener("transitionend", handler);
         resolve();
       }
@@ -54,13 +56,15 @@ async function fadeImg(source) {
   });
 }
 
+const project1 = document.getElementById("project1");
+
 let pos1 = 0;
+
 changeImg(project1, imgs_project1, pos1);
 setInterval(async () => {
-  const proj1 = document.getElementById("project1");
   pos1 = (pos1 + 1) % imgs_project1.length;
-
-  await fadeImg(proj1);
-  proj1.style.transition = "none";
-  proj1.style.opacity = 1;
+  await fadeImg(project1);
+  changeImg(project1, imgs_project1, pos1);
+  project1.style.transition = "opacity 0.5s";
+  project1.style.opacity = 1;
 }, 10000);
